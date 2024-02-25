@@ -1,0 +1,54 @@
+# プロジェクト名
+name: Shaker
+# バンドルID
+options:
+  # バンドルプレフィックス
+  bundleIdPrefix: Shaker
+  # LocalizationsのDevelopment Languageを指定
+  developmentLanguage: ja
+  
+  
+# ターゲットごとの設定
+targets:
+  Shaker:
+    # ターゲットの製品タイプ
+    type: application
+    # ターゲットのプラットフォーム
+    platform: iOS
+    # デプロイメントターゲット
+    deploymentTarget: "16.0"
+          
+    sources:
+      - Shaker
+      - project.yml
+      - .gitignore
+      - .swiftlint.yml
+      - .swift-version
+      
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: algoria.Shaker
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        DEVELOPMENT_TEAM: algoria
+        OTHER_LDFLAGS:
+          - $(inherited)
+          - -ObjC
+          - -all_load
+
+    info:
+      path: Shaker/Info.plist
+      properties:
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        LSRequiresIPhoneOS: YES
+        UILaunchScreen: ""
+        UIApplicationSupportsIndirectInputEvents: YES
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: YES
+        UISupportedInterfaceOrientations~iphone:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UISupportedInterfaceOrientations~ipad:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+
+

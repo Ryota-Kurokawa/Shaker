@@ -21,11 +21,11 @@ final class MotionManager: ObservableObject {
             motionManager.deviceMotionUpdateInterval = 0.5
             motionManager.startDeviceMotionUpdates(to: .main) { [weak self] (data, error) in
                 guard let data = data else { return }
-                let threshold: Double = 0.1
+                let threshold: Double = 2.0
                 let userAcceleration = data.userAcceleration
                 if abs(userAcceleration.x) > threshold || abs(userAcceleration.y) > threshold || abs(userAcceleration.z) > threshold {
                     self?.shakerValue += 1
-                    print("Shake detected! \(self?.shakerValue ?? 0)")
+                    print("Shaker Value: \(self?.shakerValue ?? 0)")
                 }
             }
         }
@@ -37,20 +37,4 @@ final class MotionManager: ObservableObject {
             
         }
     }
-
-//    private func startVibration() {
-//        isVibrationActive = true
-//        vibrationTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-//            if self.isVibrationActive {
-//                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-//            } else {
-//                self.vibrationTimer?.invalidate()
-//                self.vibrationTimer = nil
-//            }
-//        }
-//    }
-
-//    private func stopVibration() {
-//        isVibrationActive = false
-//    }
 }
